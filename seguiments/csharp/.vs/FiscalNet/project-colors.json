@@ -1,0 +1,21 @@
+{
+  "Version": 1,
+  "ProjectMap": {
+    "53d81716-273a-4e25-b9e6-759a9039ac6c": {
+      "ProjectGuid": "53d81716-273a-4e25-b9e6-759a9039ac6c",
+      "DisplayName": "TestesTributacao",
+      "ColorIndex": 0
+    },
+    "326dbc87-e0cf-44bd-9a1d-ecef1210ee4d": {
+      "ProjectGuid": "326dbc87-e0cf-44bd-9a1d-ecef1210ee4d",
+      "DisplayName": "TestesTributos",
+      "ColorIndex": 1
+    },
+    "a7a80b37-94d9-49f9-9e10-2225631d0238": {
+      "ProjectGuid": "a7a80b37-94d9-49f9-9e10-2225631d0238",
+      "DisplayName": "FiscalNet",
+      "ColorIndex": 2
+    }
+  },
+  "NextColorIndex": 3
+}

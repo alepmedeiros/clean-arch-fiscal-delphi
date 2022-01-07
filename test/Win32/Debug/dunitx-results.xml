@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<test-results name="C:\MyRepository\clean-arch-fiscal-delphi\test\Win32\Debug\CleanArchFiscalDelphiTest.exe" total="3" errors="0" failures="0" ignored="0" inconclusive="0" not-run="0" skipped="0" invalid="0" date="2022-01-06" time="0.032">
+  <culture-info current-culture="en" current-uiculture="en" />
+  <test-suite type="Assembly" name="CleanArchFiscalDelphiTest.exe" executed="true" result="Success" success="True" time="0.032" asserts="0">
+    <results>
+        <test-suite type="Namespace" name="CleanArchFiscalDelphi" executed="true" result="Success" success="True" time="0.031" asserts="0" >
+          <results>
+              <test-suite type="Fixture" name="TCleanArchFiscalDelphiTest" executed="True" result="Success" success="True" time="0.031" >
+                <results>
+                  <test-case name="VerificaIcms00" executed="True" result="Success" success="True" time="0.000" asserts="0" />
+                  <test-case name="VerificaIcms20" executed="True" result="Success" success="True" time="0.000" asserts="0" />
+                  <test-case name="VerificaIcms51" executed="True" result="Success" success="True" time="0.000" asserts="0" />
+                </results>
+              </test-suite>
+          </results>
+        </test-suite>
+    </results>
+  </test-suite>
+</test-results>

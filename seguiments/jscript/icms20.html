@@ -1,0 +1,174 @@
+<html>
+  <head>
+  <title>Calculadora ICMS 20</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
+  <link href="./style.css" rel="stylesheet">
+  </head>
+  <body>
+    <div class="container mt-4">
+	  <div class="container mt-4">
+      <div class="row">
+        <div class="col-12 row-heading d-flex justify-content-center">
+          Calculadora ICMS 20
+        </div>             
+      </div>
+      <div class="row">
+        <div class="col-6 row-heading">
+          Elementos
+        </div>
+        <div class="col-3 row-heading">
+          R$
+        </div>       
+      </div>
+	  
+      <div class="row">
+        <div class="col-6">
+          1. Valor do Produto
+        </div>
+        <div class="col-3">
+          <input type="number" value="0" class="qty" id="vProd"/>
+        </div>
+      </div>
+      
+       <div class="row my-3">
+        <div class="col-6">
+          2. Valor do Frete
+        </div>
+        <div class="col-3">
+          <input type="number" value="0" class="qty" id="vFrete"/>
+        </div>
+      </div>
+      
+      <div class="row my-3">
+        <div class="col-6">
+          3. Valor do Seguro
+        </div>
+        <div class="col-3">
+          <input type="number" class="qty" value="0" id="vSeg"/>
+        </div>
+      </div>
+      
+      <div class="row my-3">
+        <div class="col-6">
+          4. Outras Desepsas
+        </div>
+        <div class="col-3">
+          <input type="number" class="qty" value="0" id="vOutro"/>
+        </div>
+      </div>
+	  
+	  <div class="row my-3">
+        <div class="col-6">
+          5. Valor do Desconto
+        </div>
+        <div class="col-3">
+          <input type="number" class="qty" value="0" id="vDesc"/>
+        </div>
+      </div>
+	  
+	  <div class="row my-3">
+        <div class="col-6">
+          6. Valor do IPI
+        </div>
+        <div class="col-3">
+          <input type="number" class="qty" value="0" id="vIpi"/>
+        </div>
+      </div>
+	  
+	  <div class="row my-3">
+        <div class="col-6">
+          7. Alíquota ICMS (%)
+        </div>
+        <div class="col-3">
+          <input type="number" class="qty" value="0" id="pIcms"/>
+        </div>
+      </div>
+	  
+	  <div class="row my-3">
+        <div class="col-6">
+          8. Perc. Red. Base de ICMS (%)
+        </div>
+        <div class="col-3">
+          <input type="number" class="qty" value="0" id="pRedBc"/>
+        </div>
+      </div>
+	  
+	  <div class="row my-3">
+        <div class="col-6">
+          <button type="button" class="btn btn-primary" id="btnCalcular">Calcular</button>
+        </div>
+		<div class="col-6">
+          <button type="button" class="btn btn-primary" id="btnLimpar">Limpar</button>
+        </div>
+      </div>
+      
+      <div class="row my-4">
+        <div class="col-6 text-right total">
+         Base Icms Reduzida
+        </div>        
+        <div class="col-3 total-val">
+          <span id="base_icms">0</span
+        </div>
+      </div> 
+	  <div class="row my-4">
+        <div class="col-6 text-right total">
+         Valor Icms
+        </div>        
+        <div class="col-3 total-val">
+          <span id="valor_icms">0</span
+        </div>
+      </div>
+    </div>
+	<script>
+	window.onload = function() {
+		$("#btnCalcular").click(function(){		
+			 var valorProduto = parseFloat($("#vProd").val());
+			 var valorFrete = parseFloat($("#vFrete").val());
+			 var valorSeguro = parseFloat($("#vSeg").val());
+			 var valorOutro = parseFloat($("#vOutro").val());
+			 var valorDesconto = parseFloat($("#vDesc").val());
+			 var valorIpi = parseFloat($("#vIpi").val());
+			 var aliquotaIcms = parseFloat($("#pIcms").val());
+			 var percentualReducao = parseFloat($("#pRedBc").val());
+			 
+			 var baseIcms = calcularBaseIcmsReduzida(valorProduto, 
+								  valorFrete, 
+								  valorSeguro, 
+								  valorOutro, 
+								  valorDesconto, 
+								  percentualReducao, 
+								  valorIpi)
+			 
+			 var valorIcms = calcularIcms20(valorProduto, 
+						valorFrete, 
+						valorSeguro, 
+						valorOutro, 
+						valorDesconto, 
+						percentualReducao, 
+						aliquotaIcms, 
+						valorIpi);
+			 
+			 $("#base_icms").text(baseIcms);
+			 $("#valor_icms").text(valorIcms);		
+		});
+
+		$("#btnLimpar").click(function() {
+			$(this).closest('form').find("input[type=text], textarea").val("0");
+			$("#vProd").val("0");
+			$("#vFrete").val("0");
+			$("#vSeg").val("0");
+			$("#vOutro").val("0");
+			$("#vDesc").val("0");
+			$("#vIpi").val("0");
+			$("#pIcms").val("0");
+			$("#base_icms").text("0");
+			$("#valor_icms").text("0");
+			$("#pRedBc").val("0");
+		});
+	}			 
+	</script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.min.js" integrity="sha384-skAcpIdS7UcVUC05LJ9Dxay8AXcDYfBJqt1CJ85S/CFujBsIzCIv+l9liuYLaMQ/" crossorigin="anonymous"></script>
+	<script src="./icms20.js"></script>
+  </body> 
+</html>

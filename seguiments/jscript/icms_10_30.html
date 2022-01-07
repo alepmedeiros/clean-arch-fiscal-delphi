@@ -1,0 +1,219 @@
+<html>
+  <head>
+  <title>Calculadora ICMS 10 30</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
+  <link href="./style.css" rel="stylesheet">
+  </head>
+  <body>
+    <div class="container mt-4">
+	  <div class="container mt-4">
+      <div class="row">
+        <div class="col-12 row-heading d-flex justify-content-center">
+          Calculadora ICMS 10 30
+        </div>             
+      </div>
+      <div class="row">
+        <div class="col-6 row-heading">
+          Elementos
+        </div>
+        <div class="col-3 row-heading">
+          R$
+        </div>       
+      </div>
+	  
+      <div class="row">
+        <div class="col-6">
+          1. Valor do Produto
+        </div>
+        <div class="col-3">
+          <input type="number" value="0" class="qty" id="vProd"/>
+        </div>
+      </div>
+      
+       <div class="row my-3">
+        <div class="col-6">
+          2. Valor do Frete
+        </div>
+        <div class="col-3">
+          <input type="number" value="0" class="qty" id="vFrete"/>
+        </div>
+      </div>
+      
+      <div class="row my-3">
+        <div class="col-6">
+          3. Valor do Seguro
+        </div>
+        <div class="col-3">
+          <input type="number" class="qty" value="0" id="vSeg"/>
+        </div>
+      </div>
+      
+      <div class="row my-3">
+        <div class="col-6">
+          4. Outras Desepsas
+        </div>
+        <div class="col-3">
+          <input type="number" class="qty" value="0" id="vOutro"/>
+        </div>
+      </div>
+	  
+	  <div class="row my-3">
+        <div class="col-6">
+          5. Valor do Desconto
+        </div>
+        <div class="col-3">
+          <input type="number" class="qty" value="0" id="vDesc"/>
+        </div>
+      </div>
+	  
+	  <div class="row my-3">
+        <div class="col-6">
+          6. Valor do IPI
+        </div>
+        <div class="col-3">
+          <input type="number" class="qty" value="0" id="vIpi"/>
+        </div>
+      </div>
+	  
+	  <div class="row my-3">
+        <div class="col-6">
+          7. Alíquota ICMS Próprio (%)
+        </div>
+        <div class="col-3">
+          <input type="number" class="qty" value="0" id="pIcms"/>
+        </div>
+      </div>
+	  
+	  <div class="row my-3">
+        <div class="col-6">
+          8. Alíqupota ICMS ST (%)
+        </div>
+        <div class="col-3">
+          <input type="number" class="qty" value="0" id="pIcmsSt"/>
+        </div>
+      </div>
+	  
+	  <div class="row my-3">
+        <div class="col-6">
+          9. Percentual MVA (%)
+        </div>
+        <div class="col-3">
+          <input type="number" class="qty" value="0" id="pMvast"/>
+        </div>
+      </div>
+	  
+	  <div class="row my-3">
+        <div class="col-6">
+          <button type="button" class="btn btn-primary" id="btnCalcular">Calcular</button>
+        </div>
+		<div class="col-6">
+          <button type="button" class="btn btn-primary" id="btnLimpar">Limpar</button>
+        </div>
+      </div>
+      
+      <div class="row my-4">
+        <div class="col-6 text-right total">
+         Base Icms Próprio
+        </div>        
+        <div class="col-3 total-val">
+          <span id="base_icms">0</span
+        </div>
+      </div> 
+	  <div class="row my-4">
+        <div class="col-6 text-right total">
+         Valor Icms Próprio
+        </div>        
+        <div class="col-3 total-val">
+          <span id="valor_icms">0</span
+        </div>
+      </div>
+	  <div class="row my-4">
+        <div class="col-6 text-right total">
+         Base Icms ST
+        </div>        
+        <div class="col-3 total-val">
+          <span id="base_st">0</span
+        </div>
+      </div>
+	  <div class="row my-4">
+        <div class="col-6 text-right total">
+         Valor Icms ST
+        </div>        
+        <div class="col-3 total-val">
+          <span id="valor_st">0</span
+        </div>
+      </div>
+    </div>
+	<script>
+	window.onload = function() {
+		$("#btnCalcular").click(function(){		
+			 var valorProduto = parseFloat($("#vProd").val());
+			 var valorFrete = parseFloat($("#vFrete").val());
+			 var valorSeguro = parseFloat($("#vSeg").val());
+			 var valorOutro = parseFloat($("#vOutro").val());
+			 var valorDesconto = parseFloat($("#vDesc").val());
+			 var valorIpi = parseFloat($("#vIpi").val());
+			 var aliquotaIcmsProprio = parseFloat($("#pIcms").val());
+			 var aliquotaIcmsST = parseFloat($("#pIcmsSt").val());
+			 var percentualMVA = parseFloat($("#pMvast").val());
+			 
+			 var baseIcmsProprio = calcularBaseIcmsProprio(valorProduto, 
+								 valorFrete, 
+								 valorSeguro, 
+								 valorOutro, 
+								 valorDesconto);
+			
+			 var icmsProprio = calcularValorIcmsProprio(valorProduto, 
+								  valorFrete, 
+								  valorSeguro, 
+								  valorOutro, 
+								  valorDesconto, 
+								  aliquotaIcmsProprio);
+							  
+			 var baseIcmsST = calcularBaseIcmsST(valorProduto, 
+						    valorFrete, 
+							valorSeguro, 
+							valorOutro, 
+							valorDesconto, 
+							percentualMVA, 
+							valorIpi);
+			 
+			 var valorIcmsST = calcularIcms10(valorProduto, 
+						valorFrete, 
+						valorSeguro, 
+						valorOutro, 
+						valorDesconto, 
+						percentualMVA, 
+						aliquotaIcmsProprio, 
+						aliquotaIcmsST, 
+						valorIpi);
+			 
+			 $("#base_icms").text(baseIcmsProprio);
+			 $("#valor_icms").text(icmsProprio);
+			 $("#base_st").text(baseIcmsST);
+			 $("#valor_st").text(valorIcmsST);
+		});
+
+		$("#btnLimpar").click(function() {
+			$(this).closest('form').find("input[type=text], textarea").val("0");
+			$("#vProd").val("0");
+			$("#vFrete").val("0");
+			$("#vSeg").val("0");
+			$("#vOutro").val("0");
+			$("#vDesc").val("0");
+			$("#vIpi").val("0");
+			$("#pIcms").val("0");
+			$("#pIcmsSt").val("0");
+			$("#pMvast").val("0");
+			$("#base_icms").text("0");
+			$("#valor_icms").text("0");
+			$("#base_st").text("0");
+			$("#valor_st").text("0");
+		});
+	}			 
+	</script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.min.js" integrity="sha384-skAcpIdS7UcVUC05LJ9Dxay8AXcDYfBJqt1CJ85S/CFujBsIzCIv+l9liuYLaMQ/" crossorigin="anonymous"></script>
+	<script src="./icms10_30.js"></script>
+  </body> 
+</html>

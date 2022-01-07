@@ -1,0 +1,108 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{A7A80B37-94D9-49F9-9E10-2225631D0238}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>FiscalNet</RootNamespace>
+    <AssemblyName>FiscalNet</AssemblyName>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Implementacoes\Cofins\Cofins01_02.cs" />
+    <Compile Include="Implementacoes\Cofins\Cofins03.cs" />
+    <Compile Include="Implementacoes\Cofins\Confins04_05_06_07_08_09.cs" />
+    <Compile Include="Implementacoes\IcmsExceptions\SemRedBaseIcmsException.cs" />
+    <Compile Include="Implementacoes\IcmsExceptions\SemRedBaseIcmsSTException.cs" />
+    <Compile Include="Implementacoes\Icms\BaseReduzidaIcmsST.cs" />
+    <Compile Include="Implementacoes\Icms\IcmsDifal.cs" />
+    <Compile Include="Implementacoes\Icms\SemIcms.cs" />
+    <Compile Include="Implementacoes\Ipi\Ipi50Especifico.cs" />
+    <Compile Include="Interfaces\IIcmsDifal.cs" />
+    <Compile Include="Utils\Util.cs" />
+    <Compile Include="Implementacoes\IcmsExceptions\SemICMSProprioException.cs" />
+    <Compile Include="Implementacoes\IcmsExceptions\SemICMSSTException.cs" />
+    <Compile Include="Implementacoes\Icms\BaseIcms.cs" />
+    <Compile Include="Implementacoes\Icms\BaseIcmsST.cs" />
+    <Compile Include="Implementacoes\Icms\BaseReduzidaIcms.cs" />
+    <Compile Include="Implementacoes\Icms\Icms00.cs" />
+    <Compile Include="Implementacoes\Icms\Icms10.cs" />
+    <Compile Include="Implementacoes\Icms\Icms101_102_103.cs" />
+    <Compile Include="Implementacoes\Icms\Icms20.cs" />
+    <Compile Include="Implementacoes\Icms\Icms201_202_203.cs" />
+    <Compile Include="Implementacoes\Icms\Icms30.cs" />
+    <Compile Include="Implementacoes\Icms\Icms300_400_500.cs" />
+    <Compile Include="Implementacoes\Icms\Icms40_41_50.cs" />
+    <Compile Include="Implementacoes\Icms\Icms51.cs" />
+    <Compile Include="Implementacoes\Icms\Icms60.cs" />
+    <Compile Include="Implementacoes\Icms\Icms70.cs" />
+    <Compile Include="Implementacoes\Icms\Icms90.cs" />
+    <Compile Include="Implementacoes\Icms\Icms900.cs" />
+    <Compile Include="Implementacoes\Icms\ValorIcms.cs" />
+    <Compile Include="Implementacoes\Icms\ValorIcmsST.cs" />
+    <Compile Include="Implementacoes\Ipi\Ipi50.cs" />
+    <Compile Include="Implementacoes\Pis\Pis01_02.cs" />
+    <Compile Include="Implementacoes\Pis\Pis04_05_06_07_08_09.cs" />
+    <Compile Include="Implementacoes\Pis\Pis03.cs" />
+    <Compile Include="Interfaces\ICofins.cs" />
+    <Compile Include="Interfaces\IIcms.cs" />
+    <Compile Include="Interfaces\IIpi.cs" />
+    <Compile Include="Interfaces\IPis.cs" />
+    <Compile Include="obj\Debug\TemporaryGeneratedFile_036C0B5B-1481-4323-8D20-8F5ADCB23D92.cs" />
+    <Compile Include="obj\Debug\TemporaryGeneratedFile_5937a670-0e60-4077-877b-f7221da3dda1.cs" />
+    <Compile Include="obj\Debug\TemporaryGeneratedFile_E7A71F73-0F8D-4B9B-B56E-8E70B10BC5D3.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Tests\Test_Icms201_202_203.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="obj\Debug\DesignTimeResolveAssemblyReferencesInput.cache" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="bin\Debug\" />
+    <Folder Include="Implementacoes\Extensions\" />
+    <Folder Include="Implementacoes\IpiExceptions\" />
+    <Folder Include="obj\Debug\TempPE\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

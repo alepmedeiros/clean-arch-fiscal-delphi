@@ -1,0 +1,2 @@
+C:\MyRepository\clean-arch-fiscal-delphi\seguiments\csharp\TestesTributacao\obj\Debug\TestesTributacao.dll
+C:\MyRepository\clean-arch-fiscal-delphi\seguiments\csharp\TestesTributacao\obj\Debug\TestesTributacao.pdb

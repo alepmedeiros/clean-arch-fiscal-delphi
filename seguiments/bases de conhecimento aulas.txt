@@ -1,0 +1,159 @@
+Para a emissão adequada do documento fiscal, será necessário alguns requisitos:
+
+Por exemplo, estaremos desenvolvendo arquitetura para o Modelo 55.
+
+Atores 
+	Mais conhecido como notas de fabrica
+	  Industria -> Industria
+	  Industria -> Comercio
+	  Industria -> Consumidor
+
+	  Comercio (Varegista ou atacadista)
+	  Comercio -> Industria
+	  Distribuidor -> Comercio varejista
+	  Comercio -> comsumidor
+
+Regime tributario
+	CRT1
+	  MEI / SIMPLES NACIONAL
+	CRT2
+	  SIMPLES NACIONAL C/ EXC. REC.
+	CRT3
+	  PRESUMIDO / REAL
+
+Rejeições
+	203 - Emitente não habilitado para emissão de NF-e
+	Empresas com alguma não conformidade no SEFAZ(diferente de DENEGACAO)
+	Falha no serviço da SEFAZ
+
+Processo de emissão
+	venda > Geracao documento > sefaz > protocolo > danfe
+	faturar(emitir documento e cobrança quando necessário)
+
+* Etapas de validação
+	gerar dados nfe > validação dos dados > assinatura > transmissão da nfe > protocolo autorizado > armazenamento do xml > envio do xml ao destinatario > impressao da danfe
+
+Tipo de requisitos para retorno do sefaz
+	sincrono(aguarda resposta)
+	assincrono(não aguarda retorno)
+
+definição das validações é o retorno com o xml e o danfe impresso
+
+manual do contribuinte (manual principal)
+
+Nota técnica (atualização de campos e regras)
+
+monitorar a nota técnica
+
+Estrutura de schemas do xsd
+
+=============================================================================================
+
+* Enquadramento de empresas para os regimes fiscais
+
+** importante saber o tipo da empresa
+
+** quadro de organização societária, e para classificações fiscais
+
+----------------------------------------------------------
+**Empresario		 |	**tributação
+			 |
+**** individual		 |	**** simples nacional
+	*mei		 |		*simei
+	*ei		 |		*me
+	*eireli / slu	 |		*epp
+			 |
+**** sociedade		 |	**** lucro
+	*ltda 		 |		*lucro presumido
+	*sa		 |		*lucro real
+----------------------------------------------------------
+
+
+* dois enquadramentos para o regisme fiscal
+
+** mei / simples nacinal
+** regime normal
+
+* simples nacional - lucro presmido - lucro real
+- regimes de apuação da pessoa jurídica
+** classificação para apuração fiscal
+
+* para emissao de documentos fiscais o CRT
+- CRT1 - simples nacional (não destaca impostos na nota)
+- CRT2 - simples nacional com excesso de receita bruta (destaca os impostos proprios na nota)
+- CRT3 - regime normal (lucro presumido au lucro real)
+
+============================================================================================================================================
+
+** ICMS - imposto sobre circulação de mercadorias e serviços
+
+	* estadual
+	* o estado não pode mexer na aliquota
+	* o estado pode alterar a base de calculo ou deferir o valor
+	* composição: basede calculo + aliquota + valor
+
+	*** tipos de aliquotas
+		* intraestadual (dentro do estado)
+		* interestadual (fora do estado)
+
+	*** operação
+		* base de cauculo = 100,00
+		* aliquota = 18%
+		* valor icms = 100 * 18/100 = 18,00
+
+** ICMS-ST - icms substituição tributária
+
+	* antecipação de icms na origem da cadeia, o ciclo de industria > distribuidor > varejista > consumidor
+	* o recolhimento é feito geralmente pela industria ou equiparado(não é industria mas um importador direto)
+	* composição: base de calculo + mva- margem de valor agregado (iva - indice de valor agregado) + aliquota + valor
+
+	*** alicota st
+		 * aliquota interna da uf de destino
+
+	*** dedução
+		* deduzir do icms proprio para não ter bitributação do icms
+
+	*** industria - contribuinte substituto
+	*** atacadisca/varejista/consumidor - contribuites substituidos
+
+** IPI - imposto sobre produtos industrializados (somente industrias e equiparados)
+
+	* federal
+	* produtos manufaturados (transformado - materia prima transformado em produto acabado)
+	* TIPI
+	* altera o valor da nota
+	
+	*** composição
+		* base de calculo + aliquota + valor
+	*** operação
+		* base de calculo = 100,00
+		* aliquota = 10%
+		* valor ipi = 100 * 10/100 = 10,00
+		* valor da nota = 100 + 10,00 = 110,00
+
+** PIS / COFINS - Social
+	* federal
+	* comercialização de mercadoria e serviços
+	* regime: cumulativo x não cumulativo
+	* mercadorias monofasico
+
+	*** composicao
+		* base de calculo + aliquota + valor
+
+
+** elemento que modificam o comportamento do tributo
+
+	*** crt - 1 2 3
+	
+	*** cfop - classifica e qualificar uma operacao
+		* 1.102 -> 5.102 operacao para comercializacao dentro do estado
+		* 2.102 -> 6.102 operacao para comercializacao fora do estado
+		* 3.102 -> 7.102 operacao para comercializacao no exterior
+
+	*** cst/csosn - como vai ser tributado
+	
+	*** ncm - classifica a tributação da mercadoria
+	
+	*** cest - substituicao tributaria
+
+=====================================================================================
