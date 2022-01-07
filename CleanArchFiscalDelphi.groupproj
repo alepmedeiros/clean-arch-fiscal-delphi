@@ -1,9 +1,48 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<BorlandProject>
-	<Transactions>
-    <Transaction>2022/01/06 13:31:55.000.238,C:\Users\Criacao\Documents\Embarcadero\Studio\Projects\ProjectGroup1.groupproj=C:\MyRepository\clean-arch-fiscal-delphi\CleanArchFiscalDelphi.groupproj</Transaction>
-  </Transactions>
-	<Default.Personality>
-		<Projects ActiveProject="C:\MyRepository\clean-arch-fiscal-delphi\test\CleanArchFiscalDelphiTest.dproj"/>
-	</Default.Personality>
-</BorlandProject>
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <PropertyGroup>
+        <ProjectGuid>{86B6ECB5-75D8-41E3-B2C1-B876C84B4F95}</ProjectGuid>
+    </PropertyGroup>
+    <ItemGroup>
+        <Projects Include="test\CleanArchFiscalDelphiTest.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="Api\ApiHorse_CleanArchFiscalDelphi.dproj">
+            <Dependencies/>
+        </Projects>
+    </ItemGroup>
+    <ProjectExtensions>
+        <Borland.Personality>Default.Personality.12</Borland.Personality>
+        <Borland.ProjectType/>
+        <BorlandProject>
+            <Default.Personality/>
+        </BorlandProject>
+    </ProjectExtensions>
+    <Target Name="CleanArchFiscalDelphiTest">
+        <MSBuild Projects="test\CleanArchFiscalDelphiTest.dproj"/>
+    </Target>
+    <Target Name="CleanArchFiscalDelphiTest:Clean">
+        <MSBuild Projects="test\CleanArchFiscalDelphiTest.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="CleanArchFiscalDelphiTest:Make">
+        <MSBuild Projects="test\CleanArchFiscalDelphiTest.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="ApiHorse_CleanArchFiscalDelphi">
+        <MSBuild Projects="Api\ApiHorse_CleanArchFiscalDelphi.dproj"/>
+    </Target>
+    <Target Name="ApiHorse_CleanArchFiscalDelphi:Clean">
+        <MSBuild Projects="Api\ApiHorse_CleanArchFiscalDelphi.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="ApiHorse_CleanArchFiscalDelphi:Make">
+        <MSBuild Projects="Api\ApiHorse_CleanArchFiscalDelphi.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="Build">
+        <CallTarget Targets="CleanArchFiscalDelphiTest;ApiHorse_CleanArchFiscalDelphi"/>
+    </Target>
+    <Target Name="Clean">
+        <CallTarget Targets="CleanArchFiscalDelphiTest:Clean;ApiHorse_CleanArchFiscalDelphi:Clean"/>
+    </Target>
+    <Target Name="Make">
+        <CallTarget Targets="CleanArchFiscalDelphiTest:Make;ApiHorse_CleanArchFiscalDelphi:Make"/>
+    </Target>
+    <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
+</Project>
