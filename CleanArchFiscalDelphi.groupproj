@@ -9,6 +9,9 @@
         <Projects Include="Api\ApiHorse_CleanArchFiscalDelphi.dproj">
             <Dependencies/>
         </Projects>
+        <Projects Include="NewStruture\test\CleanArchDelphiFiscalTest.dproj">
+            <Dependencies/>
+        </Projects>
     </ItemGroup>
     <ProjectExtensions>
         <Borland.Personality>Default.Personality.12</Borland.Personality>
@@ -35,14 +38,23 @@
     <Target Name="ApiHorse_CleanArchFiscalDelphi:Make">
         <MSBuild Projects="Api\ApiHorse_CleanArchFiscalDelphi.dproj" Targets="Make"/>
     </Target>
+    <Target Name="CleanArchDelphiFiscalTest">
+        <MSBuild Projects="NewStruture\test\CleanArchDelphiFiscalTest.dproj"/>
+    </Target>
+    <Target Name="CleanArchDelphiFiscalTest:Clean">
+        <MSBuild Projects="NewStruture\test\CleanArchDelphiFiscalTest.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="CleanArchDelphiFiscalTest:Make">
+        <MSBuild Projects="NewStruture\test\CleanArchDelphiFiscalTest.dproj" Targets="Make"/>
+    </Target>
     <Target Name="Build">
-        <CallTarget Targets="CleanArchFiscalDelphiTest;ApiHorse_CleanArchFiscalDelphi"/>
+        <CallTarget Targets="CleanArchFiscalDelphiTest;ApiHorse_CleanArchFiscalDelphi;CleanArchDelphiFiscalTest"/>
     </Target>
     <Target Name="Clean">
-        <CallTarget Targets="CleanArchFiscalDelphiTest:Clean;ApiHorse_CleanArchFiscalDelphi:Clean"/>
+        <CallTarget Targets="CleanArchFiscalDelphiTest:Clean;ApiHorse_CleanArchFiscalDelphi:Clean;CleanArchDelphiFiscalTest:Clean"/>
     </Target>
     <Target Name="Make">
-        <CallTarget Targets="CleanArchFiscalDelphiTest:Make;ApiHorse_CleanArchFiscalDelphi:Make"/>
+        <CallTarget Targets="CleanArchFiscalDelphiTest:Make;ApiHorse_CleanArchFiscalDelphi:Make;CleanArchDelphiFiscalTest:Make"/>
     </Target>
     <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
 </Project>
